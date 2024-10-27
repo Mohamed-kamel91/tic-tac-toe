@@ -18,7 +18,7 @@ export const localStorageMiddleware: Middleware =
         playerOne,
         playerTwo,
       });
-      setLocalStorage('isPLaying', isPlaying);
+      // setLocalStorage('isPlaying', isPlaying);
     }
 
     return result;

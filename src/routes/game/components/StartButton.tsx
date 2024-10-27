@@ -10,11 +10,11 @@ export const StartButton = ({ startGame }: StartButtonProps) => {
   return (
     <Button
       className={cn(
-        'mt-[20px] w-[120px] self-center hover:scale-95',
-        'text-[16px]',
-        'rounded-full border-2 border-white text-white'
+        'self-center',
+        'mt-[20px] h-[64px] w-[120px] hover:w-[130px]',
+        'transition-all duration-100 ease-linear'
       )}
-      variant="default"
+      variant="border"
       onClick={startGame}
     >
       Start

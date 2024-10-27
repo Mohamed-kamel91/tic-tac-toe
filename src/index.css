@@ -5,7 +5,7 @@
 @layer base {
   html,
   body {
-    @apply bg-white;
+    @apply bg-white h-full;
   }
 
   body,
@@ -20,7 +20,7 @@
   input {
     @apply font-fredoka text-black;
   }
-
+  
   h1 {
     @apply text-[25px] font-extrabold;
   }

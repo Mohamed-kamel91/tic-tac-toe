@@ -25,11 +25,14 @@ export const StepButton = ({
   return (
     <button
       className={cn(
-        'group flex items-center gap-2 p-[10px_10px]',
-        'cursor-pointer text-white',
+        'group flex items-center gap-2',
+        'p-[10px_10px]',
+        'text-white',
+        'cursor-pointer rounded-full',
         direction === 'prev' && 'mr-auto',
         direction === 'next' && 'ml-auto',
-        disabled && "text-[rgba(255,255,255,0.6)] cursor-default",
+        disabled &&
+          'cursor-default text-[rgba(255,255,255,0.6)]',
         className
       )}
       disabled={disabled}

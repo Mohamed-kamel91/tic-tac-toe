@@ -4,15 +4,16 @@ export const baseStyles =
 export const variant = {
   default: 'text-black',
   primary:
-    'text-orange-400 bg-black hover:bg-black-hover disabled:hover:bg-black disabled:opacity-65',
-  secondary: 'bg-white text-orange-400 hover:bg-black',
+    'text-white bg-black hover:bg-black-hover disabled:hover:bg-black disabled:opacity-65',
+  secondary: 'bg-white text-black hover:bg-black',
+  border: 'bg-primary text-white border-2',
   danger: 'text-danger',
 };
 
 export const size = {
-  sm: 'py-[10px] px-[12px] rounded-[8px]',
-  md: 'py-[12px] px-[14px] rounded-[10px]',
-  lg: 'py-[14px] px-[16px] rounded-[12px]',
+  sm: 'py-[10px] px-[12px] rounded-full',
+  md: 'py-[12px] px-[14px] rounded-full',
+  lg: 'py-[14px] px-[16px] rounded-full',
 };
 
 export const textAlign = {

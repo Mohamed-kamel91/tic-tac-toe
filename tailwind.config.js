@@ -11,7 +11,8 @@ export default {
       colors: {
         current: 'currentColor',
         transparent: 'transparent',
-        white: '#FFFFFF',
+        white: '#FFFFFF', 
+        primary: '#7AB2D3', 
         black: {
           light: 'rgba(33, 33, 33, 0.2)',
           DEFAULT: '#212121',
@@ -36,13 +37,29 @@ export default {
         'input-focus': 'rgb(255, 255, 255) 0px 0px 1px 2px',
         danger: '#e94d37 0px 0px 1px 2px',
         edit: '#212121 0px 0px 1px 3px',
+        box: 'rgba(0, 0, 0, 0.2) 0px 0px 5px',
       },
       transitionProperty: {
         checkbox:
           'background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, border-width',
       },
+      transitionDelay: {
+        600: '600ms',
+        800: '800ms',
+        900: '900ms',
+        1100: '1100ms',
+        1200: '1200ms',
+      },
       transitionDuration: {
         250: '250ms',
+        600: '600ms',
+        800: '800ms',
+        1200: '1200ms',
+      },
+      transitionTimingFunction: {
+        'ease-inout-custom':
+          'cubic-bezier(0.455,0.030,0.515,0.955)',
+        'ease-out-quart': 'cubic-bezier(0.165, 0.84, 0.44, 1)',
       },
       animation: {
         spin: 'spin 700ms linear infinite',

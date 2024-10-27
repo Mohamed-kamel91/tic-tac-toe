@@ -6,7 +6,7 @@ import {
   StepButton,
   useStepper,
 } from '@components/ui/stepper';
-import { Transition } from '@components/ui/transition';
+import { SlideIn } from '@components/ui/transition/SlideIn';
 import { AddPlayer } from './AddPlayer';
 import { PlayButton } from './PlayButton';
 
@@ -33,17 +33,17 @@ export const PlayerSetup = ({
   const dispatch = useDispatch();
 
   const handlePlayerOneSuccess = (playerName: string) => {
-    handleNext();
-    if (playerOne.name === playerName) {
+    if (playerOne.name !== playerName) {
       dispatch(addPlayerOne(playerName));
     }
+    handleNext();
   };
 
   const handlePlayerTwoSuccess = (playerName: string) => {
     if (playerTwo.name !== playerName) {
       dispatch(addPlayerTwo(playerName));
-      dispatch(playGame());
     }
+    dispatch(playGame());
   };
 
   return (
@@ -51,10 +51,16 @@ export const PlayerSetup = ({
       <Stepper activeStep={activeStep}>
         {/* Step: player 1 */}
         <Step>
-          <Transition
-            translateY={100}
-            duration={300}
-            timingFunction="cubic-bezier(0.165, 0.84, 0.44, 1)"
+          <SlideIn
+            direction="bottom"
+            offsetY={100}
+            slideOnMount
+            withFade
+            transition={{
+              duration: 500,
+              timingFunction:
+                'cubic-bezier(0.165, 0.84, 0.44, 1)',
+            }}
           >
             <StepContent>
               <AddPlayer
@@ -77,15 +83,21 @@ export const PlayerSetup = ({
                 type="submit"
               />
             </StepNavigation>
-          </Transition>
+          </SlideIn>
         </Step>
 
         {/* Step: player 2 */}
         <Step>
-          <Transition
-            translateY={100}
-            duration={300}
-            timingFunction="cubic-bezier(0.165, 0.84, 0.44, 1)"
+          <SlideIn
+            direction="bottom"
+            offsetY={100}
+            slideOnMount
+            withFade
+            transition={{
+              duration: 500,
+              timingFunction:
+                'cubic-bezier(0.165, 0.84, 0.44, 1)',
+            }}
           >
             <StepContent>
               <AddPlayer
@@ -103,7 +115,7 @@ export const PlayerSetup = ({
                 onClick={handlePrev}
               />
             </StepNavigation>
-          </Transition>
+          </SlideIn>
         </Step>
       </Stepper>
     </div>

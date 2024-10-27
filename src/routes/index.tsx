@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Game } from '@routes';
+
 import { RootErrorFallback } from '@components/ui/errors';
+import { Game } from './game/Game';
 
 export const router = createBrowserRouter([
   {
@@ -12,7 +13,7 @@ export const router = createBrowserRouter([
   {
     path: '*',
     lazy: async () => {
-      const { NotFound } = await import('../routes/NotFound');
+      const { NotFound } = await import('./NotFound');
       return { Component: NotFound };
     },
   },

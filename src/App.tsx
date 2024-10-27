@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 
-import { AppProvider } from '@AppProvider';
-import { router } from '@router';
+import { AppProvider } from '@AppProvider'; 
+import { router } from '@routes';
 
 function App() {
   return (

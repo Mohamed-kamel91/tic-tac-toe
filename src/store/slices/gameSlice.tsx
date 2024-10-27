@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { RootState } from '@store';
+import { getLocalStorage } from '@utils/localStorage';
 
 export type GameState = {
   isStarted: boolean;
@@ -8,7 +9,7 @@ export type GameState = {
 
 const initialState: GameState = {
   isStarted: false,
-  isPlaying: false,
+  isPlaying: getLocalStorage('isPlaying') || false,
 };
 
 export const gameSlice = createSlice({
