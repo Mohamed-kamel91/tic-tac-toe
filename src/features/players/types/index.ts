@@ -8,7 +8,7 @@ export const PlayerNameSchema = z
     message: 'Player name must be at least 3 characters',
   });
 
-export const SideSchema = z
+export const SymbolSchema = z
   .string()
   .refine((val) => val === 'X' || val === 'O', {
     message: "Side must be either 'X' or 'O'",
@@ -16,7 +16,7 @@ export const SideSchema = z
 
 export const playerSchema = z.object({
   name: PlayerNameSchema,
-  side: SideSchema,
+  symbol: SymbolSchema,
 });
 
 export type PlayerName = z.infer<typeof PlayerNameSchema>;

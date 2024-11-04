@@ -6,17 +6,18 @@ export default {
   theme: {
     fontFamily: {
       fredoka: ['Fredoka', 'sans-serif'],
+      Anton: ['Anton', 'sans-serif'],
     },
     extend: {
       colors: {
         current: 'currentColor',
         transparent: 'transparent',
-        white: '#FFFFFF', 
-        primary: '#7AB2D3', 
+        white: '#FFFFFF',
+        primary: '#7AB2D3',
         black: {
-          light: 'rgba(33, 33, 33, 0.2)',
-          DEFAULT: '#212121',
-          hover: 'rgba(33, 33, 33, 0.95)',
+          light: '#64748b',
+          DEFAULT: '#334155',
+          dark: '#1e293b',
         },
         gray: {
           light: '#F9F9F9',
@@ -27,9 +28,13 @@ export default {
           DEFAULT: '#ede9fe',
           dark: '#6b21a8',
         },
+        blue: {
+          light: 'rgba(122, 178, 211, 0.1)',
+        },
         success: '#02C66F',
         warning: '#FF9900',
         danger: '#e94d37',
+        overlay: 'rgba(0, 0, 0, 0.36)',
       },
       boxShadow: {
         dropdown: 'rgba(0, 0, 0, 0.1) 0px 0px 12px 0px',
@@ -37,7 +42,11 @@ export default {
         'input-focus': 'rgb(255, 255, 255) 0px 0px 1px 2px',
         danger: '#e94d37 0px 0px 1px 2px',
         edit: '#212121 0px 0px 1px 3px',
-        box: 'rgba(0, 0, 0, 0.2) 0px 0px 5px',
+        primary:
+          '0 6px 6px -1px rgba(122, 178, 211, 1), 0 2px 6px -2px rgba(122, 178, 211, 1)',
+        dark: 'rgba(0, 0, 0, 0.5) 0px 3px 8px',
+        dialog:
+          '0px 8px 16px rgba(26, 32, 44, 0.1), 0px 0px 1px rgba(26, 32, 44, 0.3)',
       },
       transitionProperty: {
         checkbox:
@@ -63,6 +72,10 @@ export default {
       },
       animation: {
         spin: 'spin 700ms linear infinite',
+      },
+      zIndex: {
+        dialog: 1000,
+        overlay: 999,
       },
     },
   },

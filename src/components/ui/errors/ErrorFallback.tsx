@@ -1,4 +1,4 @@
-import { cn } from '@utils';
+import { Stack } from '../layout';
 
 export type ErrorFallbackProps = {
   className?: string;
@@ -8,18 +8,18 @@ export type ErrorFallbackProps = {
 };
 
 export const ErrorFallback = ({
-  className = '',
+  className,
   children,
 }: ErrorFallbackProps) => {
   return (
-    <div
-      className={cn(
-        'flex flex-col items-center justify-center',
-        className
-      )}
+    <Stack
+      direction="col"
+      justify="center"
+      align="center"
+      className={className}
       role="alert"
     >
       {children}
-    </div>
+    </Stack>
   );
 };

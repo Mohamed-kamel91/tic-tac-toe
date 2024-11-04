@@ -15,16 +15,18 @@ export const StartGame = ({
 }: startGameProps) => {
   return (
     <>
-      <h1
-        className={cn(
-          'text-center text-[50px] font-semibold tracking-[2px] text-white',
-          'transition-all duration-300 ease-out',
-          isStarted && 'text-[35px]',
-          isPlaying && 'hidden'
-        )}
-      >
-        TIC TAC TOE
-      </h1>
+      {!isPlaying && (
+        <h1
+          className={cn(
+            'text-center font-Anton text-[50px] font-semibold tracking-[2px]',
+            'text-white',
+            'transition-all duration-300 ease-out',
+            isStarted && 'text-[35px]'
+          )}
+        >
+          TIC TAC TOE
+        </h1>
+      )}
 
       {!isStarted && !isPlaying && (
         <StartButton startGame={handleStart} />

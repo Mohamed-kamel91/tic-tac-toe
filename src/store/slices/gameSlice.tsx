@@ -25,11 +25,15 @@ export const gameSlice = createSlice({
     playGame: (state) => {
       state.isPlaying = true;
     },
+    exitGame: (state) => {
+      state.isPlaying = false;
+      state.isStarted = false;
+    },
   },
 });
 
 // Action creators
-export const { startGame, resetStart, playGame } =
+export const { startGame, resetStart, playGame, exitGame } =
   gameSlice.actions;
 
 // Selector functions

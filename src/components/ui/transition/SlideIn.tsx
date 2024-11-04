@@ -9,7 +9,6 @@ type SlideProps = {
   offsetX?: number;
   offsetY?: number;
   transition?: TransitionCssProps;
-  // transition?: Omit<TransitionCssProps, 'transitionProperty'>;
   children: React.ReactNode;
 };
 

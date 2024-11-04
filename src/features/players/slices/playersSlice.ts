@@ -15,11 +15,11 @@ const savedPlayers = getLocalStorage<PlayersState>('players');
 const initialState: PlayersState = {
   playerOne: {
     name: savedPlayers?.playerOne.name || '',
-    side: 'X',
+    symbol: 'X',
   },
   playerTwo: {
     name: savedPlayers?.playerTwo.name || '',
-    side: 'O',
+    symbol: 'O',
   },
 };
 

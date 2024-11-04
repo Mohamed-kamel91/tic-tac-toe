@@ -4,7 +4,6 @@ import {
   ErrorFallback,
   ErrorFallbackProps,
 } from './ErrorFallback';
-import { cn } from '@utils';
 import { Button } from '../buttons';
 
 type RootErrorFallbackProps = Pick<
@@ -16,15 +15,14 @@ export const RootErrorFallback = ({
   error,
 }: RootErrorFallbackProps) => {
   return (
-    <ErrorFallback className="h-screen w-screen bg-orange-400">
-      <h2 className="mb-[20px] text-[20px] font-medium text-white">
+    <ErrorFallback className="h-screen w-screen bg-blue-light">
+      <h2 className="mb-[20px] text-[20px] font-medium text-black">
         {error?.message ?? 'Ooops, something went wrong!'}
       </h2>
 
       <Button
-        size="md"
-        variant="secondary"
-        className={cn('rounded-full')}
+        size="lg"
+        variant="primary"
         icon={<RotateCcw className="icon-rg" />}
         onClick={() => window.location.reload()}
       >

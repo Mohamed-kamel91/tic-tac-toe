@@ -2,8 +2,8 @@ export const baseStyles = 'relative transition duration-100 ease-in';
 
 export const iconButtonVariants = {
   variant: {
-    primary: 'hover:text-black hover:bg-gray color-',
-    secondary: 'hover:text-white hover:bg-black color-',
+    primary: 'hover:text-black hover:bg-gray',
+    secondary: 'hover:text-white hover:bg-black',
   },
   size: {
     sm: 'p-[6px]',

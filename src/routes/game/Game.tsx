@@ -4,7 +4,6 @@ import { CompErrorFallback } from '@components/ui/errors';
 import { PlayerSetup } from '@features/players/components/PlayerSetup';
 import { Gameplay } from '@features/gameplay/components/Gameplay';
 import { StartGame } from './components/StartGame';
-import { GameRules } from '../../features/gameplay/components/GameRules';
 
 import { useDispatch, useSelector } from '@store';
 import {
@@ -29,7 +28,7 @@ export const Game = () => {
   };
 
   return (
-    <div className="flex h-screen min-h-screen">
+    <div className="flex h-screen min-h-screen w-full">
       <div
         className={cn(
           'relative',

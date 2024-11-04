@@ -1,6 +1,10 @@
-import { Swords } from 'lucide-react';
+import { DoorClosed as ExitIcon } from 'lucide-react';
 
 import { Button } from '@components/ui/buttons';
+
+import { useDispatch } from '@store';
+import { exitGame } from '@store/slices';
+import { cn } from '@utils';
 import {
   Dialog,
   DialogActionTrigger,
@@ -10,14 +14,18 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from '@components/ui/dialogue';
+} from '@components/ui/dialogue/Dialog';
 
-import { cn } from '@utils';
-
-type RulesButtonProps =
+type ExitGameProps =
   {} & React.HTMLAttributes<HTMLButtonElement>;
 
-export const GameRules = ({ className }: RulesButtonProps) => {
+export const ExitGame = ({ className }: ExitGameProps) => {
+  const dispatch = useDispatch();
+
+  const handleExit = () => {
+    dispatch(exitGame());
+  };
+
   return (
     <Dialog>
       <DialogTrigger>
@@ -30,7 +38,7 @@ export const GameRules = ({ className }: RulesButtonProps) => {
             className
           )}
           variant="secondary"
-          icon={<Swords />}
+          icon={<ExitIcon />}
         >
           <span
             className={cn(
@@ -40,37 +48,37 @@ export const GameRules = ({ className }: RulesButtonProps) => {
               'transition-transform duration-200 ease-out'
             )}
           >
-            Rules
+            Exit
           </span>
         </Button>
       </DialogTrigger>
 
       <DialogContent className="slide-in">
         <DialogHeader>
-          <DialogTitle icon={<Swords strokeWidth={2.4} />}>
-            Rules
+          <DialogTitle icon={<ExitIcon strokeWidth={2.4} />}>
+            Exit Game
           </DialogTitle>
         </DialogHeader>
-        <DialogBody>
-          <p className="">
-            <span className="mb-2 block">
-              Each player takes turns marking an empty square
-              with their respective symbol—Player 1 uses "X" and
-              Player 2 uses "O."
-            </span>
-            <span className="block">
-              The objective is to be the first player to align
-              three of their symbols either horizontally,
-              vertically, or diagonally.
-            </span>
-          </p>
-        </DialogBody>
+        <DialogBody>Do you want to exit the game?</DialogBody>
         <DialogFooter>
           <DialogActionTrigger>
-            <Button variant="primary" size="lg">
-              Got it !
+            <Button
+              variant="outline"
+              size="lg"
+              className="min-w-[90px]"
+            >
+              Cancel
             </Button>
           </DialogActionTrigger>
+
+          <Button
+            variant="primary"
+            size="lg"
+            className="min-w-[90px]"
+            onClick={handleExit}
+          >
+            Exit
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

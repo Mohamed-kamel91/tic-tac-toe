@@ -1,3 +1,5 @@
 export { useActive } from './useActive';
 export { useScroll } from './useScroll';
-export { useToggle } from './useToggle';
+export { useDisclosure } from './useDisclosure';
+export { useIsMounted } from './useIsMounted';
+export { useScrollLock } from './useScrollLock';
