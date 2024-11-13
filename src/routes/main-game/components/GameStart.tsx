@@ -1,17 +1,15 @@
-import { StartButton } from './StartButton';
+import { StartGame } from '@features/game/components/StartGame';
 
 import { cn } from '@utils';
 
 type startGameProps = {
   isStarted: boolean;
   isPlaying: boolean;
-  handleStart: () => void;
 };
 
-export const StartGame = ({
+export const GameStart = ({
   isStarted,
   isPlaying,
-  handleStart,
 }: startGameProps) => {
   return (
     <>
@@ -28,9 +26,7 @@ export const StartGame = ({
         </h1>
       )}
 
-      {!isStarted && !isPlaying && (
-        <StartButton startGame={handleStart} />
-      )}
+      {!isStarted && !isPlaying && <StartGame />}
     </>
   );
 };

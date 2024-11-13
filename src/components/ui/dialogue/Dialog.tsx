@@ -14,7 +14,9 @@ import { cn } from '@utils';
 type BaseDialogProps = HTMLAttributes<HTMLDivElement>;
 type DialogProps = {
   id?: string;
+  isOpen: boolean;
   placement?: 'top' | 'bottom' | 'center';
+  onClose: () => void;
   children: React.ReactNode;
 };
 type DialogContentProps = BaseDialogProps & {};
@@ -27,11 +29,17 @@ type DialogTriggerProps = {
 };
 
 const Dialog = ({
+  isOpen,
   placement = 'center',
   children,
+  onClose,
 }: DialogProps) => {
   return (
-    <DialogProvider placement={placement}>
+    <DialogProvider
+      isOpen={isOpen}
+      placement={placement}
+      onClose={onClose}
+    >
       {children}
     </DialogProvider>
   );
@@ -53,7 +61,7 @@ const DialogContent = forwardRef<
   HTMLDivElement,
   DialogContentProps
 >(({ className, children }, ref) => {
-  const { isOpen, placement, closeDialog } = useDialogContext();
+  const { isOpen, placement, onClose } = useDialogContext();
 
   const align: Record<string, StackProps['align']> = {
     top: 'start',
@@ -76,7 +84,7 @@ const DialogContent = forwardRef<
           'fixed left-0 top-0 z-dialog',
           'h-full w-full p-10'
         )}
-        onClick={closeDialog}
+        onClick={onClose}
       >
         <div
           ref={ref}
@@ -152,54 +160,31 @@ const DialogFooter = ({
 };
 
 const DialogCloseTrigger = () => {
-  const { closeDialog } = useDialogContext();
+  const { onClose } = useDialogContext();
 
   return (
     <IconButton
       size="md"
       className="absolute right-3 top-3"
       aria-label="close"
-      onClick={closeDialog}
+      onClick={onClose}
     >
       <X className="icon-sm" />
     </IconButton>
   );
 };
 
-const DialogTrigger = ({ children }: DialogTriggerProps) => {
-  const { isOpen, openDialog } = useDialogContext();
-
-  if (
-    !React.isValidElement<{
-      onClick: typeof openDialog;
-      'aria-expanded': React.AriaAttributes['aria-expanded'];
-      'aria-haspopup': React.AriaAttributes['aria-haspopup'];
-    }>(children)
-  ) {
-    console.error(
-      'DialogTrigger expects a single React element as a child.'
-    );
-    return null;
-  }
-
-  return React.cloneElement(children, {
-    onClick: openDialog,
-    'aria-haspopup': 'dialog',
-    'aria-expanded': isOpen,
-  });
-};
-
 const DialogActionTrigger = ({
   children,
 }: DialogTriggerProps) => {
-  const { closeDialog } = useDialogContext();
+  const { onClose } = useDialogContext();
 
   const styles = 'min-w-[90px]';
 
   if (
     !React.isValidElement<{
       className: string;
-      onClick: typeof closeDialog;
+      onClick: typeof onClose;
       'aria-label': React.AriaAttributes['aria-label'];
     }>(children)
   ) {
@@ -208,7 +193,7 @@ const DialogActionTrigger = ({
         variant="outline"
         size="lg"
         className={styles}
-        onClick={closeDialog}
+        onClick={onClose}
         aria-label="Cancel and close dialog"
       >
         {children}
@@ -218,7 +203,7 @@ const DialogActionTrigger = ({
 
   return React.cloneElement(children, {
     className: styles,
-    onClick: closeDialog,
+    onClick: onClose,
     'aria-label': 'Cancel and close dialog',
   });
 };
@@ -230,6 +215,5 @@ export {
   DialogHeader,
   DialogBody,
   DialogFooter,
-  DialogTrigger,
   DialogActionTrigger,
 };

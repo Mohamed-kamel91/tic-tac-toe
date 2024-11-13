@@ -55,8 +55,6 @@ export const useScrollLock = (
   }, []);
 
   useLayoutEffect(() => {
-    console.log("in");
-    
     if (lockTarget) {
       target.current =
         typeof lockTarget === 'string'
@@ -74,7 +72,6 @@ export const useScrollLock = (
 
     return () => {
       if (lock) {
-        console.log("out");
         unlockScroll();
       }
     };

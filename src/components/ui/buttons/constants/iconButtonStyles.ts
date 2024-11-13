@@ -1,4 +1,4 @@
-export const baseStyles = 'relative transition duration-100 ease-in';
+export const baseStyles = 'relative transition duration-150 ease-out';
 
 export const iconButtonVariants = {
   variant: {

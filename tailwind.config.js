@@ -30,10 +30,14 @@ export default {
         },
         blue: {
           light: 'rgba(122, 178, 211, 0.1)',
+          hover: 'rgba(122, 178, 211, 0.85)'
         },
         success: '#02C66F',
         warning: '#FF9900',
-        danger: '#e94d37',
+        danger: {
+          DEFAULT: '#f87171',
+          dark: '#ef4444'
+        },
         overlay: 'rgba(0, 0, 0, 0.36)',
       },
       boxShadow: {

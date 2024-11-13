@@ -1,16 +1,16 @@
-import { useDisclosure, useScrollLock } from '@hooks';
 import React, {
   createContext,
   useContext,
   useMemo,
 } from 'react';
 
+import { useScrollLock } from '@hooks';
+
 // Dialog context
 const DialogContext = createContext<{
   isOpen: boolean;
   placement: 'top' | 'bottom' | 'center';
-  openDialog: () => void;
-  closeDialog: () => void;
+  onClose: () => void;
 } | null>(null);
 
 // Dialog hook
@@ -28,28 +28,24 @@ export const useDialogContext = () => {
 
 // Context provider
 type DialogProviderProps = {
-  open?: boolean;
+  isOpen: boolean;
+  onClose: () => void;
   placement?: 'top' | 'bottom' | 'center';
   children: React.ReactNode;
 };
 
 export const DialogProvider = ({
-  open = false,
+  isOpen,
+  onClose,
   placement = 'center',
   children,
 }: DialogProviderProps) => {
-  const {
-    isOpen,
-    close: closeDialog,
-    open: openDialog,
-  } = useDisclosure(open);
-
-  // Disable scroll when dialog is open 
+  // Disable scroll when dialog is open
   useScrollLock({ lock: isOpen });
 
   const contextValue = useMemo(
-    () => ({ isOpen, placement, closeDialog, openDialog }),
-    [isOpen, placement, closeDialog, openDialog]
+    () => ({ isOpen, placement, onClose }),
+    [isOpen, placement, onClose]
   );
 
   return (

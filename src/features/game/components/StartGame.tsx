@@ -1,12 +1,17 @@
 import { Button } from '@components/ui/buttons';
 
+import { useDispatch } from '@store';
+import { startGame } from '../slices/gameSlice';
+
 import { cn } from '@utils';
 
-type StartButtonProps = {
-  startGame: () => void;
-};
+export const StartGame = () => {
+  const dispatch = useDispatch();
 
-export const StartButton = ({ startGame }: StartButtonProps) => {
+  const handleStart = () => {
+    dispatch(startGame());
+  };
+
   return (
     <Button
       className={cn(
@@ -16,7 +21,7 @@ export const StartButton = ({ startGame }: StartButtonProps) => {
         'transition-all duration-100 ease-linear'
       )}
       variant="default"
-      onClick={startGame}
+      onClick={handleStart}
     >
       Start
     </Button>

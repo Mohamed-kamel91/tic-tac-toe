@@ -2,26 +2,22 @@ import { ErrorBoundary } from 'react-error-boundary';
 
 import { CompErrorFallback } from '@components/ui/errors';
 import { PlayerSetup } from '@features/players/components/PlayerSetup';
-import { Gameplay } from '@features/gameplay/components/Gameplay';
-import { StartGame } from './components/StartGame';
+import { Gameplay } from '@routes/main-game/components/Gameplay';
+import { GameStart } from './components/GameStart';
 
 import { useDispatch, useSelector } from '@store';
 import {
   resetStart,
   selectIsPlaying,
   selectIsStarted,
-  startGame,
-} from '../../store/slices/gameSlice';
+} from '../../features/game/slices/gameSlice';
+
 import { cn } from '@utils';
 
 export const Game = () => {
   const isStarted = useSelector(selectIsStarted);
   const isPlaying = useSelector(selectIsPlaying);
   const dispatch = useDispatch();
-
-  const handleStart = () => {
-    dispatch(startGame());
-  };
 
   const handleResetStart = () => {
     dispatch(resetStart());
@@ -46,10 +42,9 @@ export const Game = () => {
             isStarted && 'top-[42%]'
           )}
         >
-          <StartGame
+          <GameStart
             isStarted={isStarted}
             isPlaying={isPlaying}
-            handleStart={handleStart}
           />
 
           {isStarted && !isPlaying && (

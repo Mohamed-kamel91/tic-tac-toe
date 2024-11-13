@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import { RootErrorFallback } from '@components/ui/errors';
-import { Game } from './game/Game';
+import { Game } from './main-game/MainGame';
 
 export const router = createBrowserRouter([
   {

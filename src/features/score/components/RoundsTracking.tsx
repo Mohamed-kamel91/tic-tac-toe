@@ -2,8 +2,12 @@ import { Stack } from '@components/ui/layout';
 import { SlideIn } from '@components/ui/transition';
 
 import { cn } from '@utils';
+import { selectRounds } from '../slices/scoreSLice';
+import { useSelector } from '@store';
 
-export const GameRound = () => {
+export const RoundsTracking = () => {
+  const rounds = useSelector(selectRounds);
+
   return (
     <SlideIn
       direction="bottom"
@@ -27,9 +31,9 @@ export const GameRound = () => {
           align="center"
           className="px-5 py-4"
         >
-          Rounds:
+          Round:
           <span className="w-2" />
-          <span className="text-[25px] leading-8">1</span>
+          <span className="text-[25px] leading-8">{rounds}</span>
         </Stack>
       </div>
     </SlideIn>

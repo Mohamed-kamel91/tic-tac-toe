@@ -16,7 +16,7 @@ import {
   addPlayerTwo,
   selectPlayers,
 } from '../slices/playersSlice';
-import { playGame } from '@store/slices';
+import { playGame } from '@features/game/slices/gameSlice';
 
 type PlayersProps = {
   className?: string;

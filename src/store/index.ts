@@ -4,8 +4,11 @@ import {
   useSelector as useReduxSelector,
 } from 'react-redux';
 
-import gameSlice from '@store/slices/gameSlice';
+import gameSlice  from '@features/game/slices/gameSlice';
 import playersSlice from '@features/players/slices/playersSlice';
+import boardSlice from '@features/board/slices/boardSlice';
+import scoreSlice from '@features/score/slices/scoreSLice';
+
 import { localStorageMiddleware } from './middleweares/localStorageMiddleware';
 
 // Infer the RootState and AppDispatch types from the store itself
@@ -19,6 +22,8 @@ export const store = configureStore({
   reducer: {
     game: gameSlice,
     players: playersSlice,
+    board: boardSlice,
+    score: scoreSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(localStorageMiddleware),

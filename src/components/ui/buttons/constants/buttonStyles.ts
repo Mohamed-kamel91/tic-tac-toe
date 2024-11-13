@@ -1,5 +1,8 @@
-export const baseStyles =
-  'relative inline-flex items-center gap-x-[10px] font-fredoka text-[14px] font-medium transition duration-100 ease-in';
+export const baseStyles = `
+  relative inline-flex items-center gap-x-[10px] 
+  font-fredoka text-[14px] font-medium 
+  transition duration-150 ease-out
+`;
 
 export const variant = {
   default: 'text-black',
@@ -8,7 +11,7 @@ export const variant = {
   secondary: 'bg-white text-black',
   outline:
     'bg-white text-black border border-black-light hover:bg-gray',
-  danger: 'text-danger',
+  danger: 'text-white bg-danger hover:bg-danger-dark',
 };
 
 export const size = {
