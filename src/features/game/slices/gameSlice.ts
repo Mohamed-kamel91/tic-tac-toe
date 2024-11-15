@@ -26,8 +26,8 @@ export const gameSlice = createSlice({
       state.isPlaying = true;
     },
     exitGame: (state) => {
-      state.isPlaying = false;
       state.isStarted = false;
+      state.isPlaying = false;
     },
   },
 });

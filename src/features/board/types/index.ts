@@ -1,9 +1,9 @@
-import { Player } from '@features/players/types';
+import { PlayerSymbol } from '@features/players/types';
 
-// Cell types 
-export type Cell = 'X' | 'O' | null;
-export type Cells = Cell[];
-export type CellSymbol = Player['symbol'];
+// Cell
+export type CellSymbol = PlayerSymbol;
+export type Cell = CellSymbol | null;
 
-// Player 
-export type PlayerTurn = Player['symbol'];
+// Player
+export type PlayerTurn = PlayerSymbol;
+export type Winner = PlayerSymbol | null;

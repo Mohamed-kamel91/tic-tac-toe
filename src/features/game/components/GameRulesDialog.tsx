@@ -1,4 +1,4 @@
-import { DoorClosed as ExitIcon } from 'lucide-react';
+import { Swords } from 'lucide-react';
 
 import { Button } from '@components/ui/buttons';
 import {
@@ -9,25 +9,17 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@components/ui/dialogue/Dialog';
+} from '@components/ui/dialogue';
 
-import { useDispatch } from '@store';
-import { exitGame } from '../slices/gameSlice';
-
-import { cn } from '@utils';
 import { useDisclosure } from '@hooks';
 
-type ExitGameProps =
+import { cn } from '@utils';
+
+type RulesButtonProps =
   {} & React.HTMLAttributes<HTMLButtonElement>;
 
-export const ExitGame = ({ className }: ExitGameProps) => {
+export const GameRulesDialog = ({ className }: RulesButtonProps) => {
   const { isOpen, open, close } = useDisclosure();
-
-  const dispatch = useDispatch();
-
-  const handleExit = () => {
-    dispatch(exitGame());
-  };
 
   return (
     <>
@@ -40,7 +32,10 @@ export const ExitGame = ({ className }: ExitGameProps) => {
           className
         )}
         variant="secondary"
-        icon={<ExitIcon />}
+        icon={<Swords />}
+        aria-controls="dialog"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
         onClick={open}
       >
         <span
@@ -51,37 +46,37 @@ export const ExitGame = ({ className }: ExitGameProps) => {
             'transition-transform duration-200 ease-out'
           )}
         >
-          Exit
+          Rules
         </span>
       </Button>
 
       <Dialog isOpen={isOpen} onClose={close}>
         <DialogContent className="slide-in">
           <DialogHeader>
-            <DialogTitle icon={<ExitIcon strokeWidth={2.4} />}>
-              Exit Game
+            <DialogTitle icon={<Swords strokeWidth={2.4} />}>
+              Rules
             </DialogTitle>
           </DialogHeader>
-          <DialogBody>Do you want to exit the game?</DialogBody>
+          <DialogBody>
+            <p className="">
+              <span className="mb-2 block">
+                Each player takes turns marking an empty square
+                with their respective symbol—Player 1 uses "X"
+                and Player 2 uses "O."
+              </span>
+              <span className="block">
+                The objective is to be the first player to align
+                three of their symbols either horizontally,
+                vertically, or diagonally.
+              </span>
+            </p>
+          </DialogBody>
           <DialogFooter>
             <DialogActionTrigger>
-              <Button
-                variant="outline"
-                size="lg"
-                className="min-w-[90px]"
-              >
-                Cancel
+              <Button variant="primary" size="lg">
+                Got it !
               </Button>
             </DialogActionTrigger>
-
-            <Button
-              variant="primary"
-              size="lg"
-              className="min-w-[90px]"
-              onClick={handleExit}
-            >
-              Exit
-            </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

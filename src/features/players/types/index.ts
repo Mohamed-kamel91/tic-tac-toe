@@ -19,5 +19,6 @@ export const playerSchema = z.object({
   symbol: SymbolSchema,
 });
 
-export type PlayerName = z.infer<typeof PlayerNameSchema>;
 export type Player = z.infer<typeof playerSchema>;
+export type PlayerName = z.infer<typeof PlayerNameSchema>;
+export type PlayerSymbol = z.infer<typeof SymbolSchema>;

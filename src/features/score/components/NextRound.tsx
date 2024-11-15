@@ -9,8 +9,16 @@ import {
   incrementRounds,
   incrementScore,
 } from '../slices/scoreSLice';
+import { cn } from '@utils';
 
-export const NextRound = () => {
+type NextRoundProps = React.HTMLAttributes<HTMLButtonElement> & {
+  onClick?: () => void;
+};
+
+export const NextRound = ({
+  className,
+  onClick,
+}: NextRoundProps) => {
   const player = useSelector(selectPlayerTurn);
 
   const dispatch = useDispatch();
@@ -19,13 +27,14 @@ export const NextRound = () => {
     dispatch(incrementRounds());
     dispatch(incrementScore(player));
     dispatch(resetBoard());
+    onClick?.();
   };
 
   return (
     <Button
+      className={cn('min-w-[90px]', className)}
       variant="primary"
       size="lg"
-      className="min-w-[90px]"
       onClick={handleNextRound}
     >
       Next round

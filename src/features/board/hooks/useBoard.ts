@@ -2,9 +2,7 @@ import { useState } from 'react';
 
 import { useDispatch, useSelector } from '@store';
 import {
-  selectCells,
-  selectIsWinner,
-  selectPlayerTurn,
+  selectBoard,
   setCell,
   setDraw,
   setWinner,
@@ -12,28 +10,33 @@ import {
 } from '../slices/boardSlice';
 
 import { findWinningPath } from '../utils/board-utils';
-import { Cell, Cells } from '../types';
+import { Cell } from '../types';
 
 export const useBoard = () => {
-  const [errorMsg, setErrorMsg] = useState('');
+  const [invalidCell, setInvalidCell] = useState('');
   const [winningPath, setWinningPath] = useState<
     number[] | null
   >(null);
 
-  const cells = useSelector(selectCells);
-  const player = useSelector(selectPlayerTurn);
-  const isWinner = useSelector(selectIsWinner);
+  const {
+    cells,
+    winner,
+    draw,
+    playerTurn: player,
+  } = useSelector(selectBoard);
 
   const dispatch = useDispatch();
 
   const handleSelect = (cell: number) => {
+    if (winner) return;
+
     // Validate Cell selection
     validateCell(cell);
 
     // Update board cells
     const updatedBoard = updateBoard(cell);
 
-    // Check for winner
+    // Check for winning path
     const winningPath = findWinningPath(updatedBoard);
 
     if (winningPath) {
@@ -47,9 +50,9 @@ export const useBoard = () => {
   };
 
   const showErrorMessage = () => {
-    setErrorMsg('This cell is taken !');
+    setInvalidCell('This cell is taken !');
     setTimeout(() => {
-      setErrorMsg('');
+      setInvalidCell('');
     }, 2000);
   };
 
@@ -70,15 +73,16 @@ export const useBoard = () => {
 
   const isCellEmpty = (value: Cell) => !value;
 
-  const isDraw = (board: Cells) => {
+  const isDraw = (board: Cell[]) => {
     return board.every((cell) => !!cell);
   };
 
   return {
     cells,
-    isWinner,
+    winner,
+    draw,
     winningPath,
-    errorMsg,
+    invalidCell,
     handleSelect,
   };
 };

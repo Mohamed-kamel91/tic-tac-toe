@@ -2,6 +2,7 @@ import { useSelector } from '@store';
 import { ChevronDown } from 'lucide-react';
 
 import { selectPlayerTurn } from '../slices/boardSlice';
+
 import { cn } from '@utils';
 
 type TurnIndicatorProps = {

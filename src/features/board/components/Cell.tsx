@@ -3,17 +3,19 @@ import { X, Circle as O } from 'lucide-react';
 
 import { Button } from '@components/ui/buttons';
 
-import { cn } from '@utils';
-import { getCellPosition } from '../utils/board-utils';
-import { Cell as CellValue } from '../types';
 import { useSelector } from '@store';
 import { selectIsWinner } from '../slices/boardSlice';
+
+import { cn } from '@utils';
+import { getCellPosition } from '../utils/board-utils';
+
+import { Cell as CellValue } from '../types';
 
 type CellProps = {
   value: CellValue;
   number: number;
   isWinningCell: boolean;
-  onSelect: (() => void) | undefined;
+  onSelect: () => void;
 };
 
 export const Cell = ({
@@ -51,9 +53,19 @@ export const Cell = ({
       onClick={onSelect}
     >
       {value === 'X' ? (
-        <X className="scale-in h-[50px] w-[50px] stroke-[5px] drop-shadow-md" />
+        <X
+          className={cn(
+            'h-[50px] w-[50px]',
+            'scale-in stroke-[5px] drop-shadow-md'
+          )}
+        />
       ) : value === 'O' ? (
-        <O className="scale-in h-[50px] w-[50px] rounded-full stroke-[5px] drop-shadow-md" />
+        <O
+          className={cn(
+            'h-[50px] w-[50px]',
+            'scale-in rounded-full stroke-[5px] drop-shadow-md'
+          )}
+        />
       ) : null}
     </Button>
   );

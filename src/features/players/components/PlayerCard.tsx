@@ -42,7 +42,13 @@ export const PlayerCard = ({ player }: PlayerCardProps) => {
       )}
     >
       <TurnIndicator player={player} />
-      <AvatarImage src={avatar} />
+      <AvatarImage
+        className={cn(
+          'absolute left-1/2 top-0',
+          '-translate-x-1/2 -translate-y-1/2'
+        )}
+        src={avatar}
+      />
       <p
         className={cn(
           'mb-2',
@@ -56,18 +62,32 @@ export const PlayerCard = ({ player }: PlayerCardProps) => {
   );
 };
 
-const AvatarImage = ({ src }: { src: string }) => (
-  <div
-    className={cn(
-      'absolute left-1/2 top-0 overflow-hidden',
-      'h-[80px] w-[80px]',
-      'rounded-full border-4 border-white shadow-primary',
-      '-translate-x-1/2 -translate-y-1/2'
-    )}
-  >
-    <Img src={src} alt="3d icon avatar" objectFit="cover" />
-  </div>
-);
+type AvatarImageProps = {
+  className?: string;
+  src: string;
+  w?: number;
+  h?: number;
+};
+
+export const AvatarImage = ({
+  className = '',
+  src,
+  w = 80,
+  h = 80,
+}: AvatarImageProps) => {
+  return (
+    <div
+      style={{ width: `${w}px`, height: `${h}px` }}
+      className={cn(
+        'overflow-hidden',
+        'rounded-full border-4 border-white shadow-primary',
+        className
+      )}
+    >
+      <Img src={src} alt="3d icon avatar" objectFit="cover" />
+    </div>
+  );
+};
 
 const SymbolBadge = ({ icon }: { icon: React.ReactNode }) => (
   <Stack

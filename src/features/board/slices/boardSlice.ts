@@ -3,7 +3,7 @@ import type { PayloadAction } from '@reduxjs/toolkit';
 
 import { RootState } from '@store';
 
-import { Cells, PlayerTurn, CellSymbol } from '../types';
+import { PlayerTurn, CellSymbol, Winner, Cell } from '../types';
 
 type SetCellPayload = {
   cell: number;
@@ -12,8 +12,8 @@ type SetCellPayload = {
 
 export type BoardState = {
   playerTurn: PlayerTurn;
-  cells: Cells;
-  winner: PlayerTurn | null;
+  cells: Cell[];
+  winner: Winner | null;
   draw: boolean;
 };
 
@@ -41,6 +41,9 @@ export const boardSlice = createSlice({
     setDraw: (state) => {
       state.draw = true;
     },
+    resetWinner: (state) => {
+      state.winner = null;
+    },
     resetBoard: () => initialState,
   },
 });
@@ -51,10 +54,13 @@ export const {
   setCell,
   setWinner,
   setDraw,
+  resetWinner,
   resetBoard,
 } = boardSlice.actions;
 
 // Selector functions
+export const selectBoard = (state: RootState) => state.board;
+
 export const selectPlayerTurn = (state: RootState) =>
   state.board.playerTurn;
 

@@ -1,4 +1,4 @@
-import { Cells } from '../types';
+import { Cell } from '../types';
 
 const cells = [
   [0, 1, 2],
@@ -27,7 +27,7 @@ const winningPaths = [
   [2, 4, 6],
 ];
 
-export const findWinningPath = (board: Cells) => {
+export const findWinningPath = (board: Cell[]) => {
   for (let i = 0; i < winningPaths.length; i++) {
     const [a, b, c] = winningPaths[i];
     if (

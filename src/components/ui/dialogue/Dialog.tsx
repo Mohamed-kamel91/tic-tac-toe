@@ -88,6 +88,7 @@ const DialogContent = forwardRef<
       >
         <div
           ref={ref}
+          id="dialog"
           className={cn(
             'relative flex flex-col',
             'min-h-[220px] w-[450px]',

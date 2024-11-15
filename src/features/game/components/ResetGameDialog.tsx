@@ -1,4 +1,4 @@
-import { Swords } from 'lucide-react';
+import { RotateCcw as ResetIcon } from 'lucide-react';
 
 import { Button } from '@components/ui/buttons';
 import {
@@ -9,16 +9,19 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@components/ui/dialogue';
+} from '@components/ui/dialogue/Dialog';
+import { ResetGame } from './ResetGame';
 
 import { useDisclosure } from '@hooks';
 
 import { cn } from '@utils';
 
-type RulesButtonProps =
+type ResetGameProps =
   {} & React.HTMLAttributes<HTMLButtonElement>;
 
-export const GameRules = ({ className }: RulesButtonProps) => {
+export const ResetGameDialog = ({
+  className,
+}: ResetGameProps) => {
   const { isOpen, open, close } = useDisclosure();
 
   return (
@@ -32,7 +35,10 @@ export const GameRules = ({ className }: RulesButtonProps) => {
           className
         )}
         variant="secondary"
-        icon={<Swords />}
+        icon={<ResetIcon />}
+        aria-controls="dialog"
+        aria-haspopup="dialog"
+        aria-expanded={isOpen}
         onClick={open}
       >
         <span
@@ -43,37 +49,30 @@ export const GameRules = ({ className }: RulesButtonProps) => {
             'transition-transform duration-200 ease-out'
           )}
         >
-          Rules
+          Reset
         </span>
       </Button>
 
       <Dialog isOpen={isOpen} onClose={close}>
         <DialogContent className="slide-in">
           <DialogHeader>
-            <DialogTitle icon={<Swords strokeWidth={2.4} />}>
-              Rules
+            <DialogTitle icon={<ResetIcon strokeWidth={2.4} />}>
+              Reset Game
             </DialogTitle>
           </DialogHeader>
-          <DialogBody>
-            <p className="">
-              <span className="mb-2 block">
-                Each player takes turns marking an empty square
-                with their respective symbol—Player 1 uses "X"
-                and Player 2 uses "O."
-              </span>
-              <span className="block">
-                The objective is to be the first player to align
-                three of their symbols either horizontally,
-                vertically, or diagonally.
-              </span>
-            </p>
-          </DialogBody>
+          <DialogBody>Do you want to reset the game?</DialogBody>
           <DialogFooter>
             <DialogActionTrigger>
-              <Button variant="primary" size="lg">
-                Got it !
+              <Button
+                variant="outline"
+                size="lg"
+                className="min-w-[90px]"
+              >
+                Cancel
               </Button>
             </DialogActionTrigger>
+
+            <ResetGame onClick={() => close()} />
           </DialogFooter>
         </DialogContent>
       </Dialog>

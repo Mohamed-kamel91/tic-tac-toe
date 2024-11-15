@@ -1,6 +1,8 @@
-import { ReactPortal } from '@components/ui/react-portal';
 import { SlideIn } from '@components/ui/transition';
 import { Cell } from './Cell';
+import { ShowDraw } from './ShowDraw';
+import { ShowWinner } from './ShowWinner';
+import { InvalidCellError } from './InvalidCellError';
 
 import { useBoard } from '../hooks/useBoard';
 
@@ -9,9 +11,10 @@ import { cn } from '@utils';
 export const GameBoard = () => {
   const {
     cells,
-    isWinner,
+    winner,
+    draw,
     winningPath,
-    errorMsg,
+    invalidCell,
     handleSelect,
   } = useBoard();
 
@@ -43,38 +46,18 @@ export const GameBoard = () => {
                 value={cell}
                 number={index}
                 isWinningCell={!!winningPath?.includes(index)}
-                onSelect={
-                  !isWinner
-                    ? () => handleSelect(index)
-                    : undefined
-                }
+                onSelect={() => handleSelect(index)}
               />
             );
           })}
         </div>
       </SlideIn>
 
-      {errorMsg && (
-        <ReactPortal wrapperId="toast-root">
-          <div
-            className="fixed bottom-5 left-1/2 -translate-x-1/2"
-            role="alert"
-            aria-live="assertive"
-          >
-            <div
-              className={cn(
-                'p-[10px_20px]',
-                'rounded-full border border-primary bg-white shadow-md',
-                'slide-in'
-              )}
-            >
-              <p className="text-[14px] font-medium text-primary">
-                {errorMsg}
-              </p>
-            </div>
-          </div>
-        </ReactPortal>
-      )}
+      {invalidCell && <InvalidCellError message={invalidCell} />}
+      
+      <ShowWinner winner={winner} />
+          
+      {draw && <ShowDraw />}  
     </>
   );
 };
