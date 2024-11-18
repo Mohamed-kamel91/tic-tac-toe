@@ -25,7 +25,7 @@ jobs:
           version: 1.22.22  
 
       - name: Install dependencies
-        uses: yarn install
+        uses: yarn run install
 
       - name: Build project
         run: yarn build
