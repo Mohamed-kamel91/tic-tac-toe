@@ -3,7 +3,7 @@ import { DelayedMount } from '@components/ui/delayed-mount';
 import { Stack } from '@components/ui/layout';
 import { Img } from '@components/ui/image';
 import { AvatarImage } from '@features/players/components/PlayerCard';
-import { ResetGame } from '@features/game/components/ResetGameAction';
+import { ResetGameAction } from '@features/game/components/ResetGameAction';
 import { NextRound } from '@features/score/components/NextRound';
 
 import { useSelector } from '@store';
@@ -94,7 +94,7 @@ const WinnerSummary = ({
       {`${winnerName} is the winner`}
     </p>
     <div className="flex flex-col">
-      <ResetGame
+      <ResetGameAction
         className="mb-2 h-[60px] w-full"
         variant="outline"
       />
