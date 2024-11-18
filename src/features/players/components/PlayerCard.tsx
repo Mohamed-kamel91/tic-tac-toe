@@ -80,7 +80,7 @@ export const AvatarImage = ({
       style={{ width: `${w}px`, height: `${h}px` }}
       className={cn(
         'overflow-hidden',
-        'rounded-full border-4 border-white shadow-primary',
+        'rounded-full border-4 border-white shadow-primary bg-white',
         className
       )}
     >
