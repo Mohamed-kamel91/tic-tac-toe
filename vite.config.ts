@@ -13,7 +13,7 @@ export default defineConfig({
   plugins: [
     react(),
     svgr(),
-    // checker({ typescript: true }),
+    checker({ typescript: true }),
     tsconfigPaths(),
   ],
   css: {
