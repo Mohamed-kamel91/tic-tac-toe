@@ -2,7 +2,7 @@ import { Stack } from '@components/ui/layout';
 import { SlideIn } from '@components/ui/transition';
 
 import { cn } from '@utils';
-import { selectRounds } from '../slices/scoreSLice';
+import { selectRounds } from '../slices/scoreSlice';
 import { useSelector } from '@store';
 
 export const RoundsTracking = () => {

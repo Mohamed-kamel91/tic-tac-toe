@@ -8,7 +8,7 @@ import {
 import {
   incrementRounds,
   incrementScore,
-} from '../slices/scoreSLice';
+} from '../slices/scoreSlice';
 import { cn } from '@utils';
 
 type NextRoundProps = React.HTMLAttributes<HTMLButtonElement> & {

@@ -1,6 +1,6 @@
 import { Button } from '@components/ui/buttons';
 import { resetBoard } from '@features/board/slices/boardSlice';
-import { resetScore } from '@features/score/slices/scoreSLice';
+import { resetScore } from '@features/score/slices/scoreSlice';
 import { exitGame } from '../slices/gameSlice';
 
 import { useDispatch } from '@store';

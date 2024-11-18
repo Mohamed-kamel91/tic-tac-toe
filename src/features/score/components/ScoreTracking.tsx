@@ -4,7 +4,7 @@ import { PlayerCard } from '../../players/components/PlayerCard';
 import { RoundsWon } from './RoundsWon';
 
 import { useSelector } from '@store';
-import { selectScore } from '../slices/scoreSLice';
+import { selectScore } from '../slices/scoreSlice';
 
 import { Player } from '@features/players/types';
 

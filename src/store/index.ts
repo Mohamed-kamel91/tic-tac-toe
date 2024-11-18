@@ -7,7 +7,7 @@ import {
 import gameSlice  from '@features/game/slices/gameSlice';
 import playersSlice from '@features/players/slices/playersSlice';
 import boardSlice from '@features/board/slices/boardSlice';
-import scoreSlice from '@features/score/slices/scoreSLice';
+import scoreSlice from '@features/score/slices/scoreSlice';
 
 import { localStorageMiddleware } from './middleweares/localStorageMiddleware';
 
