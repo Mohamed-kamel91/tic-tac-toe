@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@components/ui/dialogue/Dialog';
-import { ResetGame } from './ResetGame';
+import { ResetGameAction } from './ResetGameAction';
 
 import { useDisclosure } from '@hooks';
 
@@ -85,7 +85,7 @@ export const ResetGameDialog = ({
               </Button>
             </DialogActionTrigger>
 
-            <ResetGame onClick={() => close()} />
+            <ResetGameAction onClick={() => close()} />
           </DialogFooter>
         </DialogContent>
       </Dialog>

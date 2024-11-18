@@ -11,7 +11,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@components/ui/dialogue/Dialog';
-import { ExitGame } from './ExitGame';
+import { ExitGameAction } from './ExitGameAction';
 
 import { useDisclosure } from '@hooks';
 
@@ -85,7 +85,7 @@ export const ExitGameDialog = ({
               </Button>
             </DialogActionTrigger>
 
-            <ExitGame />
+            <ExitGameAction />
           </DialogFooter>
         </DialogContent>
       </Dialog>

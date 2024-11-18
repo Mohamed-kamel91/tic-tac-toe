@@ -3,7 +3,7 @@ import { DelayedMount } from '@components/ui/delayed-mount';
 import { Stack } from '@components/ui/layout';
 import { Img } from '@components/ui/image';
 import { AvatarImage } from '@features/players/components/PlayerCard';
-import { ResetGame } from '@features/game/components/ResetGame';
+import { ResetGame } from '@features/game/components/ResetGameAction';
 import { NextRound } from '@features/score/components/NextRound';
 
 import { useSelector } from '@store';

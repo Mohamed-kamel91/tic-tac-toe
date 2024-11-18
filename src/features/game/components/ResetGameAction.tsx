@@ -7,16 +7,17 @@ import { resetScore } from '@features/score/slices/scoreSlice';
 import { cn } from '@utils';
 import { ButtonProps } from '@components/ui/buttons/types';
 
-type ResetGameProps = React.HTMLAttributes<HTMLButtonElement> & {
-  variant?: ButtonProps<'button'>['variant'];
-  onClick?: () => void;
-};
+type ResetGameActionProps =
+  React.HTMLAttributes<HTMLButtonElement> & {
+    variant?: ButtonProps<'button'>['variant'];
+    onClick?: () => void;
+  };
 
-export const ResetGame = ({
+export const ResetGameAction = ({
   className,
   variant = 'danger',
   onClick,
-}: ResetGameProps) => {
+}: ResetGameActionProps) => {
   const dispatch = useDispatch();
 
   const handleReset = () => {

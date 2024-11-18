@@ -2,7 +2,7 @@ import { ReactPortal } from '@components/ui/react-portal';
 import { DelayedMount } from '@components/ui/delayed-mount';
 import { Stack } from '@components/ui/layout';
 import { Img } from '@components/ui/image';
-import { ResetGame } from '@features/game/components/ResetGame';
+import { ResetGameAction } from '@features/game/components/ResetGameAction';
 import { NextRound } from '@features/score/components/NextRound';
 
 import { cn } from '@utils';
@@ -51,7 +51,7 @@ export const ShowDraw = ({ draw }: ShowDrawProps) => {
             >
               It's draw !
             </p>
-            <ResetGame
+            <ResetGameAction
               className="mb-2 h-[60px] w-full"
               variant="outline"
             />

@@ -1,11 +1,11 @@
 import { Button } from '@components/ui/buttons';
+
+import { useDispatch } from '@store';
 import { resetBoard } from '@features/board/slices/boardSlice';
 import { resetScore } from '@features/score/slices/scoreSlice';
 import { exitGame } from '../slices/gameSlice';
 
-import { useDispatch } from '@store';
-
-export const ExitGame = () => {
+export const ExitGameAction = () => {
   const dispatch = useDispatch();
 
   const handleExit = () => {
