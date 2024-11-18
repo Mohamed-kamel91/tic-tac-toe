@@ -1,5 +1,6 @@
 import { RotateCcw as ResetIcon } from 'lucide-react';
 
+import { SlideIn } from '@components/ui/transition';
 import { Button } from '@components/ui/buttons';
 import {
   Dialog,
@@ -16,42 +17,54 @@ import { useDisclosure } from '@hooks';
 
 import { cn } from '@utils';
 
-type ResetGameProps =
-  {} & React.HTMLAttributes<HTMLButtonElement>;
+type ResetGameDialogProps =
+  React.HTMLAttributes<HTMLButtonElement> & {};
 
 export const ResetGameDialog = ({
   className,
-}: ResetGameProps) => {
+}: ResetGameDialogProps) => {
   const { isOpen, open, close } = useDisclosure();
 
   return (
     <>
-      <Button
-        className={cn(
-          'group gap-0 overflow-hidden',
-          'h-16 w-16 px-5 hover:w-28',
-          'shadow-sm',
-          'transition-all duration-200 ease-out',
-          className
-        )}
-        variant="secondary"
-        icon={<ResetIcon />}
-        aria-controls="dialog"
-        aria-haspopup="dialog"
-        aria-expanded={isOpen}
-        onClick={open}
+      <SlideIn
+        direction="right"
+        offsetX={-20}
+        slideOnMount
+        withFade
+        transition={{
+          duration: 600,
+          delay: 850,
+          timingFunction: 'cubic-bezier(0.165, 0.84, 0.44, 1)',
+        }}
       >
-        <span
+        <Button
           className={cn(
-            'absolute ml-2 group-hover:static',
-            'opacity-0 group-hover:opacity-100',
-            '-translate-x-1 group-hover:translate-x-0',
-            'transition-transform duration-200 ease-out'
+            'group gap-0 overflow-hidden',
+            'h-16 w-16 px-5 hover:w-28',
+            'shadow-sm',
+            'transition-all duration-200 ease-out',
+            className
           )}
+          variant="secondary"
+          icon={<ResetIcon />}
+          aria-controls="dialog"
+          aria-haspopup="dialog"
+          aria-expanded={isOpen}
+          onClick={open}
         >
-          Reset
-        </span>
-      </Button>
+          <span
+            className={cn(
+              'absolute ml-2 group-hover:static',
+              'opacity-0 group-hover:opacity-100',
+              '-translate-x-1 group-hover:translate-x-0',
+              'transition-transform duration-200 ease-out'
+            )}
+          >
+            Reset
+          </span>
+        </Button>
+      </SlideIn>
 
       <Dialog isOpen={isOpen} onClose={close}>
         <DialogContent className="slide-in">

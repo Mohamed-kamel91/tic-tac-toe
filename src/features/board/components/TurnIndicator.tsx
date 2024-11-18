@@ -4,9 +4,10 @@ import { ChevronDown } from 'lucide-react';
 import { selectPlayerTurn } from '../slices/boardSlice';
 
 import { cn } from '@utils';
+import { PlayerTurn } from '../types';
 
 type TurnIndicatorProps = {
-  player: 'X' | 'O';
+  player: PlayerTurn;
 };
 
 export const TurnIndicator = ({

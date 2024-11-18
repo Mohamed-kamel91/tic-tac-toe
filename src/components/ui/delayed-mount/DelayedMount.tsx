@@ -6,7 +6,7 @@ type DelayedMountProps = {
 };
 
 export const DelayedMount = ({
-  delay = 0,
+  delay = 150,
   children,
 }: DelayedMountProps) => {
   const { isMounted } = useIsMounted(delay);

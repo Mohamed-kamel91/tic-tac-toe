@@ -20,32 +20,43 @@ const alignClasses: Record<string, string> = {
   center: 'items-center',
   end: 'items-end',
   baseline: 'items-baseline',
-  stretch: 'items-stretch'
-}
-
-export const Stack = ({
-  className = '',
-  direction = 'row',
-  justify = 'start',
-  align = 'stretch',
-  gap,
-  children,
-  ...props
-}: StackProps) => {
-  return (
-    <div
-      className={cn(
-        'flex',
-        direction === 'col' && 'flex-col',
-        justify && `justify-${justify}`,
-        align &&  alignClasses[align],
-        gap && `gap-${gap}`,
-        className
-      )}
-      style={{ gap: `${gap}px` }}
-      {...props}
-    >
-      {children}
-    </div>
-  );
+  stretch: 'items-stretch',
 };
+
+export const Stack = React.forwardRef<
+  HTMLDivElement,
+  StackProps
+>(
+  (
+    {
+      className = '',
+      direction = 'row',
+      justify = 'start',
+      align = 'stretch',
+      gap,
+      children,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          'flex',
+          direction === 'col' && 'flex-col',
+          justify && `justify-${justify}`,
+          align && alignClasses[align],
+          gap && `gap-${gap}`,
+          className
+        )}
+        style={{ gap: `${gap}px` }}
+        {...props}
+      >
+        {children}
+      </div>
+    );
+  }
+);
+
+Stack.displayName = 'Stack';

@@ -1,4 +1,5 @@
 import { ReactPortal } from '@components/ui/react-portal';
+import { DelayedMount } from '@components/ui/delayed-mount';
 import { Stack } from '@components/ui/layout';
 import { Img } from '@components/ui/image';
 import { AvatarImage } from '@features/players/components/PlayerCard';
@@ -14,7 +15,6 @@ import { Winner } from '../types';
 import mascot3D from '@assets/images/3d-mascot.jpg';
 import birder3D from '@assets/images/3d-bird.jpg';
 import crown from '@assets/images/crown.png';
-import { DelayedMount } from '@components/ui/delayed-mount';
 
 type ShowWinnerProps = {
   winner: Winner;

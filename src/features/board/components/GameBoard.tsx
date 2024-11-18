@@ -57,7 +57,7 @@ export const GameBoard = () => {
       
       <ShowWinner winner={winner} />
           
-      {draw && <ShowDraw />}  
+      <ShowDraw draw={draw} />
     </>
   );
 };

@@ -30,23 +30,53 @@ export const useBoard = () => {
   const handleSelect = (cell: number) => {
     if (winner) return;
 
-    // Validate Cell selection
-    validateCell(cell);
+    // Check if cell is valid
+    if (!isCellEmpty(cells[cell])) {
+      showErrorMessage();
+      return;
+    }
 
-    // Update board cells
+    processCellSelection(cell);
+  };
+
+  const processCellSelection = (cell: number) => {
+    // Set cell and update board state
+    dispatch(setCell({ cell, symbol: player }));
     const updatedBoard = updateBoard(cell);
 
-    // Check for winning path
-    const winningPath = findWinningPath(updatedBoard);
+    // Evaluate game state
+    evaluateGame(updatedBoard);
+  };
+
+  const updateBoard = (cell: number) => {
+    const updatedCells = [...cells];
+    updatedCells[cell] = player;
+    return updatedCells;
+  };
+
+  const evaluateGame = (board: Cell[]) => {
+    const winningPath = findWinningPath(board);
 
     if (winningPath) {
-      setWinningPath(winningPath);
-      dispatch(setWinner(player));
-    } else if (isDraw(updatedBoard)) {
-      dispatch(setDraw());
+      handleWin(winningPath);
+    } else if (isDraw(board)) {
+      handleDraw();
     } else {
-      dispatch(switchTurn());
+      handleNextTurn();
     }
+  };
+
+  const handleWin = (winningPath: number[]) => {
+    setWinningPath(winningPath);
+    dispatch(setWinner(player));
+  };
+
+  const handleDraw = () => {
+    dispatch(setDraw());
+  };
+
+  const handleNextTurn = () => {
+    dispatch(switchTurn());
   };
 
   const showErrorMessage = () => {
@@ -54,21 +84,6 @@ export const useBoard = () => {
     setTimeout(() => {
       setInvalidCell('');
     }, 2000);
-  };
-
-  const validateCell = (cell: number) => {
-    if (isCellEmpty(cells[cell])) {
-      dispatch(setCell({ cell, symbol: player }));
-    } else {
-      showErrorMessage();
-      return;
-    }
-  };
-
-  const updateBoard = (cell: number) => {
-    const updatedCells = [...cells];
-    updatedCells[cell] = player;
-    return updatedCells;
   };
 
   const isCellEmpty = (value: Cell) => !value;
