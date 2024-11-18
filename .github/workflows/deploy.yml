@@ -18,8 +18,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22.1.0
-          cache: 'yarn'
-          
+
+      - name: Cache Yarn Dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Setup Yarn
         uses: threeal/setup-yarn-action@v2.0.0
         with:
